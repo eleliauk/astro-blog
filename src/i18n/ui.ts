@@ -1,6 +1,6 @@
 export const ui = {
-  'zh': {
-    title: '信也のブログ',
+  zh: {
+    title: 'Shanyujia‘s blog',
     subtitle: '一写代码的',
     description: '互联网自留地',
     posts: '文章',
@@ -19,10 +19,10 @@ export const ui = {
       navigation: '导航',
       select: '选择',
       poweredBy: '由 Pagefind 驱动',
-      ariaLabel: '搜索文章'
-    }
+      ariaLabel: '搜索文章',
+    },
   },
-  'en': {
+  en: {
     title: '信也のブログ',
     subtitle: 'Coder',
     description: 'A personal haven on the Internet',
@@ -42,10 +42,10 @@ export const ui = {
       navigation: 'Navigate',
       select: 'Select',
       poweredBy: 'Powered by Pagefind',
-      ariaLabel: 'Search articles'
-    }
+      ariaLabel: 'Search articles',
+    },
   },
-  'ja': {
+  ja: {
     title: '信也のブログ',
     subtitle: 'コーダー',
     description: 'インターネット上のプライベート空間',
@@ -65,7 +65,7 @@ export const ui = {
       navigation: 'ナビゲーション',
       select: '選択',
       poweredBy: 'Pagefind で駆動',
-      ariaLabel: '記事を検索'
-    }
-  }
+      ariaLabel: '記事を検索',
+    },
+  },
 }

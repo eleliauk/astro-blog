@@ -164,23 +164,15 @@ export const themeConfig: ThemeConfig = {
       },
       {
         name: 'GitHub',
-        url: 'https://github.com/senshinya',
+        url: 'https://github.com/eleliuak',
       },
       {
         name: 'Email',
-        url: 'mailto:kobayashi_shinya@outlook.com',
-      },
-      {
-        name: 'TG',
-        url: 'https://t.me/senshinya',
-      },
-      {
-        name: 'Travelling',
-        url: 'https://www.travellings.cn/go.html',
+        url: 'mailto:shanyujia0626@gmail.com',
       },
     ],
     // year of website start
-    startYear: 2021,
+    startYear: 2023,
   },
   // FOOTER SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 
@@ -188,7 +180,7 @@ export const themeConfig: ThemeConfig = {
   preload: {
     // link prefetch
     // docs: https://docs.astro.build/en/guides/prefetch/#prefetch-strategies
-    imageHostURL: 'blog-img.shinya.click'
+    imageHostURL: 'blog-img.shinya.click',
   },
   // PRELOAD SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 }

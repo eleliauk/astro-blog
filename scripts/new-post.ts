@@ -36,7 +36,7 @@ tags:
 draft: false
 pin: 0
 toc: ${themeConfig.global.toc}
-lang: ''
+lang: zh
 abbrlink: ''
 ---
 `
