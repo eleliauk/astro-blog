@@ -3,7 +3,7 @@ title: js类型转换
 published: 2024-08-17T16:47:37.000Z
 description: ''
 updated: ''
-tags: []
+tags: ['Javascript']
 draft: false
 pin: 0
 toc: true

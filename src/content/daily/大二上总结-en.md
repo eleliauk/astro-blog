@@ -1,3 +1,16 @@
+---
+title: 2024 Year-End Summary
+published: 2025-01-14T00:10:40.000Z
+description: ''
+updated: ''
+tags: []
+draft: false
+pin: 0
+toc: true
+lang: zh
+abbrlink: ''
+---
+
 # 2024 Year-End Summary
 
 >Why does time seem to pass faster the older we get? Is it because we're aging faster, or is it because the clock's hands are moving faster?

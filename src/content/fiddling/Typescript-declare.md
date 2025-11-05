@@ -3,7 +3,7 @@ title: Typescript-declare
 published: 2024-05-12T13:37:37.000Z
 description: ''
 updated: ''
-tags: []
+tags: ['ts']
 draft: false
 pin: 0
 toc: true

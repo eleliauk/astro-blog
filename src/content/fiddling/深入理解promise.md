@@ -3,7 +3,7 @@ title: 深入理解promise
 published: 2025-02-25T20:29:53.000Z
 description: ''
 updated: ''
-tags: []
+tags: ['Javascript']
 draft: false
 pin: 0
 toc: true

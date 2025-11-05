@@ -3,7 +3,7 @@ title: Javascript忍者秘籍blog-1
 published: 2024-04-21T13:12:28.000Z
 description: ''
 updated: ''
-tags: []
+tags: ['Javascript']
 draft: false
 pin: 0
 toc: true
@@ -59,20 +59,19 @@ this表示函数上下文，即与函数调用相关联的对象。(还是有很
 #### 作为函数被直接调用
 
 ```js
-/*函数定义作为函数被调用*/
-function aa(){
-    console.log(this)
+/* 函数定义作为函数被调用 */
+function aa() {
+  console.log(this)
 }
-aa(); //=>object.window
-/*函数表达式作为函数被调用*/
-let bb = function(){
-    console.log(this)
+aa() // =>object.window
+/* 函数表达式作为函数被调用 */
+let bb = function () {
+  console.log(this)
 }
-bb(); //=>object.window
-/*立即调用函数表达式作为函数被调用*/
-(function(){console.log(this)})();
-//=>object.window
-
+bb(); // =>object.window
+/* 立即调用函数表达式作为函数被调用 */
+(function () { console.log(this) })()
+// =>object.window
 ```
 
 #### 作为对象方法被调用
@@ -80,17 +79,17 @@ bb(); //=>object.window
 当一个函数被赋值一个对象的属性，并且通过对象属性引用的方式调用函数时，函数会作为对象的方法被调用。 作为对象方法调用的函数this值与对象关联，通过this可以访问所关联对象的其他方法和属性
 
 ```js
-function aa(){return this}
-console.log(aa()==window);
-//=>true
-var obj1 = {}
-obj1.aa = aa;
-console.log(obj1.aa()==obj1);
-//=>true
-var obj2 = {}
-obj2.bb = aa;
-console.log(obj2.bb()==obj2);
-//=>true
+function aa() { return this }
+console.log(aa() == window)
+// =>true
+let obj1 = {}
+obj1.aa = aa
+console.log(obj1.aa() == obj1)
+// =>true
+let obj2 = {}
+obj2.bb = aa
+console.log(obj2.bb() == obj2)
+// =>true
 ```
 
 #### 作为构造函数调用
@@ -108,22 +107,21 @@ console.log(obj2.bb()==obj2);
 5. 如果构建函数返回的是非对象类型，则忽略返回值，返回新创建的对象。
 
 ```js
-function Ninja(){
-  //这里的this表示Ninja函数的上下文
-    this.skulk = function(){
-      //这里的this表示该匿名函数的上下文
-        return this;
-    }
+function Ninja() {
+  // 这里的this表示Ninja函数的上下文
+  this.skulk = function () {
+    // 这里的this表示该匿名函数的上下文
+    return this
+  }
 }
-//skulk以对象的方式调用是，返回值是其关联的对象
-var ninja1 = new Ninja();
-var ninja2 = new Ninja();
-console.log(ninja1.skulk() == ninja1);
-console.log(ninja2.skulk() == ninja2);
+// skulk以对象的方式调用是，返回值是其关联的对象
+let ninja1 = new Ninja()
+let ninja2 = new Ninja()
+console.log(ninja1.skulk() == ninja1)
+console.log(ninja2.skulk() == ninja2)
 // skulk复制给一个变量后，直接调用函数时，非严格模式下skulk返回的值是window
-var skulk = ninja2.skulk;
-console.log(skulk() == window);
-
+let skulk = ninja2.skulk
+console.log(skulk() == window)
 ```
 
 #### 通过apply与call方法调用
@@ -147,22 +145,22 @@ function.apply(context, [argsArray])
 `context` 是指定函数中的 `this` 关键字指向的对象，`argsArray` 是一个数组，其中包含要传递给函数的参数
 
 ```js
-function juggle(){
-    var result = 0;
-    for(var n=0; n<arguments.length; n++){
-        result+=arguments[n]
-    }
-    this.result = result;
+function juggle() {
+  let result = 0
+  for (let n = 0; n < arguments.length; n++) {
+    result += arguments[n]
+  }
+  this.result = result
 }
 
-var ninja1 = {};
-var ninja2 = {};
+let ninja1 = {}
+let ninja2 = {}
 
-juggle.apply(ninja1, [1,2,3,4,5])
-juggle.call(ninja2, 1,2,3,4,5, 6)
+juggle.apply(ninja1, [1, 2, 3, 4, 5])
+juggle.call(ninja2, 1, 2, 3, 4, 5, 6)
 
 console.log(ninja1.result == 15)
-console.log(ninja2.result == 21) 
+console.log(ninja2.result == 21)
 ```
 
 apply和call功能类似，唯一的不同在于如何传递参数。apply和call第一个参数作为函数的上下文，apply第二个参数是一个包含参数值的数组。call可以传入任意数量参数，作为函数的参数。
@@ -187,21 +185,20 @@ apply和call功能类似，唯一的不同在于如何传递参数。apply和cal
 谁调用我 this指向谁
 
 ```javascript
-var obj = {
-            fn1:function() {
-                console.log(this); 
-            },
-            fn2:function(){
-                fn3() 
-            }
-        }
-        function fn3() {
-            console.log(this); 
-        }
-        fn3();//this->window
-        obj.fn1();//this->obj
-        obj.fn2();//this->window
-
+let obj = {
+  fn1() {
+    console.log(this)
+  },
+  fn2() {
+    fn3()
+  }
+}
+function fn3() {
+  console.log(this)
+}
+fn3()// this->window
+obj.fn1()// this->obj
+obj.fn2()// this->window
 ```
 
 #### 箭头函数的this
@@ -209,32 +206,31 @@ var obj = {
 箭头函数没有自己的this，箭头函数的this就是上下文中定义的this，因为箭头函数没有自己的this所以不能用做构造函数。
 
 ```js
- var div = document.querySelector('div'); 
-    var o={
-        a:function(){
-            var arr=[1];
-          //就是定义所在对象中的this
-          //这里的this—>o
-            arr.forEach(item=>{
-              //所以this -> o
-                console.log(this);
-            })
-        },
-      //这里的this指向window o是定义在window中的对象
-        b:()=>{
-            console.log(this);
-        },
-        c:function() {
-            console.log(this);
-        }
-    }
-    div.addEventListener('click',item=>{
-        console.log(this);//this->window 这里的this就是定义上文window环境中的this
-    });
-    o.a(); //this->o
-    o.b();//this->window
-    o.c();//this->o 普通函数谁调用就指向谁
-
+let div = document.querySelector('div')
+let o = {
+  a() {
+    let arr = [1]
+    // 就是定义所在对象中的this
+    // 这里的this—>o
+    arr.forEach((item) => {
+      // 所以this -> o
+      console.log(this)
+    })
+  },
+  // 这里的this指向window o是定义在window中的对象
+  b: () => {
+    console.log(this)
+  },
+  c() {
+    console.log(this)
+  }
+}
+div.addEventListener('click', (item) => {
+  console.log(this)// this->window 这里的this就是定义上文window环境中的this
+})
+o.a() // this->o
+o.b()// this->window
+o.c()// this->o 普通函数谁调用就指向谁
 ```
 
 #### 事件绑定中的this
@@ -242,15 +238,14 @@ var obj = {
 基本上都是指向this->事件源的:laughing:
 
 ```js
-var div = document.querySelector('div'); 
-    div.addEventListener('click',function() {
-        console.log(this); //this->div
-    });
-    
-    div.onclick = function() {
-    console.log(this) //this->div
-    }
+let div = document.querySelector('div')
+div.addEventListener('click', function () {
+  console.log(this) // this->div
+})
 
+div.onclick = function () {
+  console.log(this) // this->div
+}
 ```
 
 #### 定时器的this
@@ -258,13 +253,13 @@ var div = document.querySelector('div');
 定时器中采用回调函数作为处理函数 回调函数的this->window
 
 ```js
-  setInterval(function() {
-        console.log(this); //this->window 
-    },500)
-    
-    setTimeout(function() {
-        console.log(this); //this->window 
-    },500)
+setInterval(function () {
+  console.log(this) // this->window
+}, 500)
+
+setTimeout(function () {
+  console.log(this) // this->window
+}, 500)
 442
 ```
 
@@ -272,21 +267,17 @@ var div = document.querySelector('div');
 
 构造函数配合new使用, 而new关键字会将构造函数中的this指向实例化对象，所以构造函数中的this->实例化对象
 
-
-
 ```js
-function Person(name,age) {
-        this.name = name;
-        this.age = age;
-    }
-    var person1 = new Person();
-    person1.name = 'ggb';
-    person1.age = 21;
-    console.log(person1);//Person {name: "ggb", age: 21}
-    var person2 = new Person();
-    person2.name = 'syj';
-    person2.age = 19;
-    console.log(person2);// Person {name: "syj", age: 19}
-
+function Person(name, age) {
+  this.name = name
+  this.age = age
+}
+let person1 = new Person()
+person1.name = 'ggb'
+person1.age = 21
+console.log(person1)// Person {name: "ggb", age: 21}
+let person2 = new Person()
+person2.name = 'syj'
+person2.age = 19
+console.log(person2)// Person {name: "syj", age: 19}
 ```
-

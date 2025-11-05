@@ -4,20 +4,20 @@ export const themeConfig: ThemeConfig = {
   // SITE INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   site: {
     // site title
-    title: '信也のブログ',
+    title: 'Shanyujia‘s blog',
     // site subtitle
-    subtitle: '一写代码的',
+    subtitle: '繁花似锦觅安宁',
     // site description
-    description: '互联网自留地',
+    description: '神秘小博客',
     // use i18n title/subtitle/description from src/i18n/ui.ts instead of static ones above
-    i18nTitle: true, // true, false
+    i18nTitle: false, // true, false
     // author name
-    author: 'shinya',
+    author: 'yujiashan',
     // site url
-    url: 'https://shinya.click',
+    url: 'https://astro-blog.muxi.org.cn',
     // favicon url
     // recommended formats: svg, png or ico
-    favicon: '/icons/favicon.png', // or https://example.com/favicon.svg
+    favicon: '/icons/favicon.jpeg', // or https://example.com/favicon.svg
   },
   // SITE INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 
@@ -117,7 +117,7 @@ export const themeConfig: ThemeConfig = {
   // SEO SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   seo: {
     // @twitter ID
-    twitterID: '@shinya19990609',
+    twitterID: '',
     // site verification
     verification: {
       // google search console
@@ -158,13 +158,10 @@ export const themeConfig: ThemeConfig = {
   footer: {
     // social links
     links: [
-      {
-        name: 'RSS',
-        url: '/rss.xml',
-      },
+
       {
         name: 'GitHub',
-        url: 'https://github.com/eleliuak',
+        url: 'https://github.com/eleliauk',
       },
       {
         name: 'Email',

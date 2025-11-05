@@ -3,7 +3,7 @@ title: YOLO初体验
 published: 2024-08-29T13:19:59.000Z
 description: ''
 updated: ''
-tags: []
+tags: ['Something Interesting']
 draft: false
 pin: 0
 toc: true

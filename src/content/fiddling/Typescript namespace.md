@@ -3,7 +3,7 @@ title: Typescript namespace
 published: 2024-07-12T08:55:09.000Z
 description: ''
 updated: ''
-tags: []
+tags: ['ts']
 draft: false
 pin: 0
 toc: true

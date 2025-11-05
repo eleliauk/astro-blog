@@ -1,8 +1,8 @@
 ---
-import { defaultLocale, moreLocales } from '@/config'
-import Comments from '@/components/Comment/Index.astro'
-import Layout from '@/layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
+import Comments from '@/components/Comment/Index.astro'
+import { defaultLocale, moreLocales } from '@/config'
+import Layout from '@/layouts/Layout.astro'
 
 export async function getStaticPaths() {
   type PathItem = {
