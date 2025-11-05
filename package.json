@@ -2,6 +2,7 @@
   "name": "astro-theme-retypeset",
   "type": "module",
   "version": "1.0.0",
+  "packageManager": "pnpm@9.15.9",
   "repository": "https://github.com/radishzzz/astro-theme-retypeset",
   "scripts": {
     "dev": "pnpm run memos && astro check && astro dev",
@@ -23,6 +24,7 @@
     "@astrojs/mdx": "^4.3.3",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/sitemap": "^3.5.0",
+    "@astrojs/vercel": "^9.0.0",
     "@waline/client": "^3.6.0",
     "astro": "^5.13.2",
     "astro-compress": "^2.3.8",
