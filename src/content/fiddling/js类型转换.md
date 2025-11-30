@@ -11,7 +11,7 @@ lang: zh
 abbrlink: ''
 ---
 
-# `Javascript`隐式类型转换
+# `Javascript` 隐式类型转换
 
 ## 类型都有什么
 
@@ -24,9 +24,9 @@ abbrlink: ''
 - Symbol (ES2015)
 - BigInt (ESNext stage 4)
 
-是不是感觉还有Function，毕竟能用**typeof**获取到？不，函数、数组都是Object的子类型。
+是不是感觉还有 Function，毕竟能用**typeof**获取到？不，函数、数组都是 Object 的子类型。
 
-类型分为`基本类型`和`复合类型`两种，除了对象，其它都是基本类型
+类型分为 `基本类型`和`复合类型` 两种，除了对象，其它都是基本类型
 
 ### 接下来有请重量级嘉宾
 
@@ -38,11 +38,11 @@ abbrlink: ''
 转换规则：
 
 1. 如果是基本类型，则不处理。
-2. 调用`valueOf()`，并确保返回值是基本类型。
-3. 如果没有valueOf这个方法或者valueOf返回的类型不是基本类型，那么对象会继续调用`toString()`方法。
-4. 如果同时没有valueOf和toString方法，或者返回的都不是基本类型，那么直接抛出`TypeError`异常。
+2. 调用 `valueOf()`，并确保返回值是基本类型。
+3. 如果没有 valueOf 这个方法或者 valueOf 返回的类型不是基本类型，那么对象会继续调用 `toString()` 方法。
+4. 如果同时没有 valueOf 和 toString 方法，或者返回的都不是基本类型，那么直接抛出 `TypeError` 异常。
 
-> 注意：如果**preferedType=string**，那么2、3顺序调换
+> 注意：如果**preferedType=string**，那么 2、3 顺序调换
 
 接着，我们看下各个对象的转换实现
 
@@ -53,9 +53,9 @@ abbrlink: ''
 | Array    | 原值      | "x,y,z"                | Number            |
 | Date     | 数字      | "Sat May 22 2021..."   | String            |
 
-1. 数组的toString()可以等效为`join(",")`，遇到null, undefined都被忽略，遇到symbol直接报错，遇到无法ToPrimitive的对象也报错。
-2. 使用`模板字符串`或者使用`String(...)`包装时，preferedType=string，即优先调用 .toString()。
-3. 使用`减法`或者`Number(...)`包装时，preferedType=number，即优先调用`.valueOf()`
+1. 数组的 toString() 可以等效为 `join(",")`，遇到 null, undefined 都被忽略，遇到 symbol 直接报错，遇到无法 ToPrimitive 的对象也报错。
+2. 使用 `模板字符串`或者使用`String(...)` 包装时，preferedType=string，即优先调用 .toString()。
+3. 使用 `减法`或者`Number(...)` 包装时，preferedType=number，即优先调用`.valueOf()`
 
 接下来看几个🌰
 
@@ -90,10 +90,10 @@ Number('x') // NaN
 
 加减法运算中遵循了一些隐式转换规则：
 
-##### 遇到对象先执行ToPrimitive转换为基本类型
+##### 遇到对象先执行 ToPrimitive 转换为基本类型
 
-- **加法**（+）运算，preferedType是默认值
-- **减法**（-）运算，preferedType是Number
+- **加法**（+）运算，preferedType 是默认值
+- **减法**（-）运算，preferedType 是 Number
 
 ```javascript
 // {}.toString() === "[object Object]"
@@ -108,9 +108,9 @@ function test() {}
 10 + test === '10function test() {}'
 ```
 
-##### 非字符串 + 非字符串，两边都会先ToNumber
+##### 非字符串 + 非字符串，两边都会先 ToNumber
 
-这里的非字符串都是指基本类型，因为对象会先执行ToPrimitive变成基础类型
+这里的非字符串都是指基本类型，因为对象会先执行 ToPrimitive 变成基础类型
 
 ```javascript
 1 + true === 2
@@ -136,7 +136,7 @@ null + null === 0
 
 ​	•	**NaN + [1]**：
 
-​	•	[1] 是一个数组对象，当数组对象与非字符串类型相加时，JavaScript会调用它的 toString() 方法，将数组转换为字符串。
+​	•	[1] 是一个数组对象，当数组对象与非字符串类型相加时，JavaScript 会调用它的 toString() 方法，将数组转换为字符串。
 
 ​	•	[1].toString() 返回 "1"。
 
@@ -144,7 +144,7 @@ null + null === 0
 
 ​	•	NaN 被隐式转换为字符串 "NaN"，然后与 "1" 进行字符串连接。
 
-##### 任意值 - 任意值，一律执行ToNumber，进行数字运算。
+##### 任意值 - 任意值，一律执行 ToNumber，进行数字运算。
 
 此时的 preferedType === number
 
@@ -160,7 +160,7 @@ null + null === 0
 // {}.toString() => "[object Object]" => Number(...) => NaN
 3 - {} // NaN
 
-// Date的默认preferedType === string
+// Date 的默认 preferedType === string
 var date = new Date();
 date.toString = () => 'str';
 date.valueOf = () => 123;
@@ -169,7 +169,7 @@ date + 1 === 'str1';
 date - 1 = 122;
 ```
 
-再看`[] + {}`，这样是不是就easy
+再看`[] + {}`，这样是不是就 easy
 
 ```javascript
 [].toString() === "";
@@ -189,21 +189,21 @@ date - 1 = 122;
 
 这啥玩意？说好的"[object Object]"呢？
 
-好吧，这是`{}`其实代表的是**代码块**，最后就变成了`+ []`，根据前面的原则，数组先被转换成字符串`""`，接着因为+x的运算，字符串被转成数字`0`。
+好吧，这是 `{}` 其实代表的是**代码块**，最后就变成了`+ []`，根据前面的原则，数组先被转换成字符串 `""`，接着因为+x 的运算，字符串被转成数字`0`。
 
-那 { a: 2 } 总该是对象了吧？其实这时候`a`不是代表对象属性，而是被当成了标签（label），标签这东西IE6就已经有了。所以如果我们写成对象是会报错的，逗号要改成分号才能通过编译。
+那 { a: 2 } 总该是对象了吧？其实这时候 `a` 不是代表对象属性，而是被当成了标签（label），标签这东西 IE6 就已经有了。所以如果我们写成对象是会报错的，逗号要改成分号才能通过编译。
 
 ```javascript
 // Uncaught SyntaxError: Unexpected token ':'
 { a: 2, b: 3 } + []
 
-// 分号OK
+// 分号 OK
 { a: 2; b: 3 } + [] === 0;
 ```
 
-##### symbol不能加减
+##### symbol 不能加减
 
-如果在表达式中有symbol类型，那么就会直接报错。比如`1 + Symbol("x")`报错如下：
+如果在表达式中有 symbol 类型，那么就会直接报错。比如`1 + Symbol("x")`报错如下：
 
 ```livecodeserver
 Uncaught TypeError: Cannot convert a Symbol value to a number
@@ -221,7 +221,7 @@ Uncaught TypeError: Cannot convert a Symbol value to a number
 [] != []
 ```
 
-##### 对象 == 基本值，对象先执行ToPrimitive转换为基本类型
+##### 对象 == 基本值，对象先执行 ToPrimitive 转换为基本类型
 
 ```javascript
 // 小心代码块
@@ -250,7 +250,7 @@ Uncaught TypeError: Cannot convert a Symbol value to a number
 '' == false
 ```
 
-##### 数字 == 字符串，字符串ToNumber转换成数字
+##### 数字 == 字符串，字符串 ToNumber 转换成数字
 
 ```javascript
 "2" == 2
@@ -262,7 +262,7 @@ Uncaught TypeError: Cannot convert a Symbol value to a number
 
 ##### null、undefined、symbol
 
-null、undefined与任何非自身的值对比结果都是false，但是`null == undefined` 是一个特例。
+null、undefined 与任何非自身的值对比结果都是 false，但是`null == undefined` 是一个特例。
 
 ```javascript
 null == null
@@ -282,7 +282,7 @@ Symbol('x') != Symbol('x')
 
 对比不像相等，可以严格相等（===）防止类型转换，对比一定会存在隐式类型转换。
 
-##### 对象总是先执行ToPrimitive为基本类型
+##### 对象总是先执行 ToPrimitive 为基本类型
 
 ```javascript
 [] < [] // false
@@ -367,9 +367,9 @@ undefined < 5 // false
 
 ## 总结
 
-对象都需要先ToPrimitive转成基本类型，除非是宽松相等（==）时两个对象做对比。
+对象都需要先 ToPrimitive 转成基本类型，除非是宽松相等（==）时两个对象做对比。
 
 - \+   没有字符串就全转数字
 - \-   全转数字，preferedType===Number
-- ==  同类型不转，数字优先，布尔全转数字，null、undefined、symbol不转
+- ==  同类型不转，数字优先，布尔全转数字，null、undefined、symbol 不转
 - <>  数字优先，除非两边都是字符串

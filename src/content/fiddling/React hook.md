@@ -26,7 +26,7 @@ Hook 就是 `Javascript` 函数，使用它们时有两个额外的规则：
 - 只能在**函数外层**调用 Hook，不要在循环、条件判断或者子函数中调用
 - 只能在 **React 的函数组件** 和**自定义 Hook** 中调用 Hook。不要在其他 JavaScript 函数中调用
 
-在组件中 React 是通过判断 Hook 调用的顺序来判断某个 state 对应的 `useState`的，所以必须保证 Hook 的调用顺序在多次渲染之间保持一致，React 才能正确地将内部 state 和对应的 Hook 进行关联
+在组件中 React 是通过判断 Hook 调用的顺序来判断某个 state 对应的 `useState` 的，所以必须保证 Hook 的调用顺序在多次渲染之间保持一致，React 才能正确地将内部 state 和对应的 Hook 进行关联
 
 ## `useState`
 
@@ -36,24 +36,24 @@ Hook 就是 `Javascript` 函数，使用它们时有两个额外的规则：
 const [ ①state , ②dispatch ] = useState(③initData)
 ```
 
-① `state`，目的提供给 `UI` ，作为渲染视图的数据源
+① `state`，目的提供给 `UI`，作为渲染视图的数据源
 
 ② `dispatchAction`(setState) 改变 state 的函数，可以理解为推动函数组件渲染的渲染函数
 
-③ `initData` 有两种情况，第一种情况是非函数，将作为 state 初始化的值。 第二种情况是函数，函数的返回值作为 `useState` 初始化的值
+③ `initData` 有两种情况，第一种情况是非函数，将作为 state 初始化的值。第二种情况是函数，函数的返回值作为 `useState` 初始化的值
 
 基础用法
 
 ```jsx
 function DemoState(props) {
-  /* number为此时state读取值 ，setNumber为派发更新的函数 */
-  let [number, setNumber] = useState(0) /* 0为初始值 */
+  /* number 为此时 state 读取值，setNumber 为派发更新的函数 */
+  let [number, setNumber] = useState(0) /* 0 为初始值 */
   return (
     <div>
       <span>{ number }</span>
       <button onClick={() => {
         setNumber(number + 1)
-        console.log(number) /* 这里的number是不能够即使改变的  */
+        console.log(number) /* 这里的 number 是不能够即使改变的  */
       }}
       >
       </button>
@@ -74,7 +74,7 @@ function DemoState(props) {
 
 组件中可能有多个位置包括了对某个状态的修改操作
 
-`useReducer`用于统一管理状态的操作方式
+`useReducer` 用于统一管理状态的操作方式
 
 使用 `useReducer` 还能给那些会触发深更新的组件做性能优化，因为父组件可以向子组件传递 `dispatch` 而不是回调函数
 
@@ -84,15 +84,15 @@ const [state, dispatch] = useReducer (countReducer, 0)
 
 ① 更新之后的 state 值。
 
-② 派发更新的 dispatch 函数, 本质上和 `useState` 的 dispatch是一样的。
+② 派发更新的 dispatch 函数，本质上和 `useState` 的 dispatch 是一样的。
 
-③ 一个函数`countReducer` 常规reducer里面的 state 和action
+③ 一个函数 `countReducer` 常规 reducer 里面的 state 和 action
 
 准备一个用来进行状态功能管理的函数
 
 ```jsx
 function countReducer(state, action)
-// state reducer管理状态的是哪个
+// state reducer 管理状态的是哪个
 // action 对这个状态进行哪些操作
 {
   switch (action.type) {
@@ -138,9 +138,9 @@ useEffect(() => {
 }, dep)
 ```
 
-第一个参数`callback`返回的 `destroy`    作为下一次`callback`执行之前调用 用于清楚上一次`callback`产生的副作用
+第一个参数 `callback` 返回的 `destroy`    作为下一次 `callback` 执行之前调用 用于清楚上一次 `callback` 产生的副作用
 
-第二个参数作为依赖项，是一个数组，可以有多个依赖项，依赖项改变，执行上一次callback 返回的 `destory` ，和执行新的 effect 第一个参数 callback
+第二个参数作为依赖项，是一个数组，可以有多个依赖项，依赖项改变，执行上一次 callback 返回的 `destory`，和执行新的 effect 第一个参数 callback
 
 ```jsx
 /* 模拟数据交互 */
@@ -160,7 +160,7 @@ const Demo = ({ a }) => {
     const [number, setNumber] = useState(0)
     /* 模拟事件监听处理函数 */
     const handleResize =()=>{}
-  /* useEffect使用 ，这里如果不加限制 ，会是函数重复执行，陷入死循环*/
+  /* useEffect 使用，这里如果不加限制，会是函数重复执行，陷入死循环*/
     useEffect(()=>{
         /* 请求数据 */
         getUserInfo(a).then(res=>{
@@ -168,7 +168,7 @@ const Demo = ({ a }) => {
         })
         /* 定时器 延时器等 */
         const timer = setInterval(()=>console.log(666),1000)
-        /* 操作dom  */
+        /* 操作 dom  */
         console.log(div.current) /* div */
         /* 事件监听等 */
         window.addEventListener('resize', handleResize)
@@ -177,7 +177,7 @@ const Demo = ({ a }) => {
             clearInterval(timer)
             window.removeEventListener('resize', handleResize)
         }
-          /* 只有当props->a和state->number改变的时候 ,useEffect副作用函数重新执行 ，如果此时数组为空[]，证明函数只有在初始化的时候执行一次相当于componentDidMount */
+          /* 只有当 props->a 和 state->number 改变的时候 ,useEffect 副作用函数重新执行，如果此时数组为空 []，证明函数只有在初始化的时候执行一次相当于 componentDidMount */
     },[ a ,number ])
     return (<div ref={div} >
                 <span>{ userMessage.name }</span>
@@ -191,9 +191,9 @@ const Demo = ({ a }) => {
 如上在 `useEffect` 中做的功能如下：
 
 - ① 请求数据。
-- ② 设置定时器,延时器等。
+- ② 设置定时器，延时器等。
 - ③ 操作 `Dom `
-- ④ 注册事件监听器, 事件绑定
+- ④ 注册事件监听器，事件绑定
 - ⑤ 还可以清除定时器，延时器，解绑事件监听器等。
 
 ##  `useLayoutEffect`
@@ -206,11 +206,11 @@ const Demo = ({ a }) => {
 
 ## `useContext`
 
-可以用`useContext` 来获取父级组件传递过来的`context`的值
+可以用 `useContext` 来获取父级组件传递过来的 `context` 的值
 
-这个当前值就是最近的父级组件`Provider` 设置的`value`值 ,
+这个当前值就是最近的父级组件 `Provider` 设置的 `value` 值 ,
 
-`useContext` 参数一般是由`createContext`方式创建的,也可以父级上下文`context`传递的(参数是`context` )
+`useContext` 参数一般是由 `createContext`方式创建的，也可以父级上下文`context` 传递的 (参数是`context` )
 
 ```jsx
 const contextValue = useContext(context)
@@ -219,7 +219,7 @@ const contextValue = useContext(context)
 `useContext` 接受一个参数 一般都是 context 对象，返回值为 context 对象内部保存的 value 值
 
 ```jsx
-/* 用useContext方式 */
+/* 用 useContext 方式 */
 function DemoContext() {
   const value = useContext(Context)
   /* my name is alien */
@@ -232,7 +232,7 @@ function DemoContext() {
   )
 }
 
-/* 用Context.Consumer 方式 */
+/* 用 Context.Consumer 方式 */
 function DemoContext1() {
   return (
     <Context.Consumer>
@@ -273,7 +273,7 @@ console.log(cur.current)
 
 ### `useRef 基础用法：`
 
-`useRef`来获取DOM节点
+`useRef` 来获取 DOM 节点
 
 ```jsx
 function DemoUseRef() {
@@ -284,7 +284,7 @@ function DemoUseRef() {
   }
   return (
     <div>
-      {/* ref 标记当前dom节点 */}
+      {/* ref 标记当前 dom 节点 */}
       <div ref={dom}>表单组件</div>
       <button onClick={() => handerSubmit()}>提交</button>
     </div>
@@ -324,7 +324,7 @@ const cacheSomething = useMemo(create, deps)
 
 ① create：第一个参数为一个函数，函数的返回值作为缓存值，如上 demo 中把 Children 对应的 element 对象，缓存起来。
 
-② deps： 第二个参数为一个数组，存放当前 useMemo 的依赖项，在函数组件下一次执行的时候，会对比 deps 依赖项里面的状态，是否有改变，如果有改变重新执行 create ，得到新的缓存值。
+② deps：第二个参数为一个数组，存放当前 useMemo 的依赖项，在函数组件下一次执行的时候，会对比 deps 依赖项里面的状态，是否有改变，如果有改变重新执行 create，得到新的缓存值。
 
 ③ `cacheSomething`：返回值，执行 create 的返回值。如果 deps 中有依赖项改变，返回的重新执行 create 产生的值，否则取上一次缓存值。
 
@@ -352,7 +352,7 @@ function Scope() {
 }
 ```
 
-如上通过 `useMemo` 得到派生出来的新状态 `contextValue` ，只有 keeper 变化的时候，才改变 Provider 的 value
+如上通过 `useMemo` 得到派生出来的新状态 `contextValue`，只有 keeper 变化的时候，才改变 Provider 的 value
 
 ## `useCallback`
 
@@ -366,6 +366,6 @@ function Scope() {
 
 看不懂思密达
 
-## `自定义hook`
+## `自定义 hook`
 
 别急

@@ -10,8 +10,8 @@ toc: true
 lang: zh
 abbrlink: ''
 ---
-# React组件通信
->随着 2019 年 2 月 React 稳定版 hooks 在 16.8 版本发布，涌现了越来越多的 “hooks 时代” 的状态管理库（如 zustand），“class 时代” 的状态管理库（如 redux）也全面拥抱了 hooks。无一例外，它们都聚焦于解决 组件通信 的问题 🤔
+# React 组件通信
+>随着 2019 年 2 月 React 稳定版 hooks 在 16.8 版本发布，涌现了越来越多的“hooks 时代”的状态管理库（如 zustand），“class 时代”的状态管理库（如 redux）也全面拥抱了 hooks。无一例外，它们都聚焦于解决 组件通信 的问题 🤔
 
 - 组件通信的方式有哪些？
 - 这么多的状态管理库要怎么选？
@@ -27,7 +27,7 @@ abbrlink: ''
 
 接下来一个一个介绍一下
 
-## props和 callback
+## props 和 callback
 
 props 和 callback 是 React 中组件通信最基本的方式，也是最常用的方式。
 
@@ -39,7 +39,7 @@ React 组件最基础的通信方式是使用 props 来传递信息，props 是�
 - children
 - balabala...
 
-一般情况在“父传子” 的通信场景下使用 props，下面是一个 props 通信的例子
+一般情况在“父传子”的通信场景下使用 props，下面是一个 props 通信的例子
 
 ```jsx
 import React, { useState } from "react";
@@ -68,7 +68,7 @@ function Child(props) {
 }
 
 ```
-callback 回调函数也可以是props 
+callback 回调函数也可以是 props 
 利用 callback 回调函数，子组件可以向父组件传递信息，来一个 callback 通信的🌰
 ```jsx
 function Parent() {
@@ -97,14 +97,14 @@ function Child(props) {
 这时候一般会发现一个问题
 在多级嵌套组件的场景下，使用 props 进行通信是一件成本极高的事情
 你要一直穿穿穿
-所以context就应运而生了 😎
+所以 context 就应运而生了 😎
 ## Context
-react官方对于context的使用场景是
+react 官方对于 context 的使用场景是
 >使用 Context 看起来非常诱人！
 > 然而，这也意味着它也太容易被过度使用了。*如果你只想把一些 props 传递到多个层级中，这并不意味着你需要把这些信息放到 context 里。*
 >在使用 context 之前，你可以考虑以下几种替代方案：
->1. 从 传递 props 开始。 如果你的组件看起来不起眼，那么通过十几个组件向下传递一堆 props 并不罕见。这有点像是在埋头苦干，但是这样做可以让哪些组件用了哪些数据变得十分清晰！维护你代码的人会很高兴你用 props 让数据流变得更加清晰。
->2. 抽象组件并 将 JSX 作为 children 传递 给它们。 如果你通过很多层不使用该数据的中间组件（并且只会向下传递）来传递数据，这通常意味着你在此过程中忘记了抽象组件。举个例子，你可能想传递一些像 posts 的数据 props 到不会直接使用这个参数的组件，类似 `<Layout posts={posts} />`。取而代之的是，让 Layout 把 children 当做一个参数，然后渲染 `<Layout><Posts posts={posts} /></Layout>`。这样就减少了定义数据的组件和使用数据的组件之间的层级。
+>1. 从 传递 props 开始。如果你的组件看起来不起眼，那么通过十几个组件向下传递一堆 props 并不罕见。这有点像是在埋头苦干，但是这样做可以让哪些组件用了哪些数据变得十分清晰！维护你代码的人会很高兴你用 props 让数据流变得更加清晰。
+>2. 抽象组件并 将 JSX 作为 children 传递 给它们。如果你通过很多层不使用该数据的中间组件（并且只会向下传递）来传递数据，这通常意味着你在此过程中忘记了抽象组件。举个例子，你可能想传递一些像 posts 的数据 props 到不会直接使用这个参数的组件，类似 `<Layout posts={posts} />`。取而代之的是，让 Layout 把 children 当做一个参数，然后渲染 `<Layout><Posts posts={posts} /></Layout>`。这样就减少了定义数据的组件和使用数据的组件之间的层级。
 >如果这两种方法都不适合你，再考虑使用 context。
 
 
@@ -169,13 +169,13 @@ React 的状态管理库一直以来都是 React 生态中非常内卷的一个�
 ### redux
 Redux 是一个基于 Flux 架构的一种实现，遵循“单向数据流”和“不可变状态模型”的设计思想
 
-这个简单介绍一下 flux架构
-Flux将一个应用分成四个部分。
+这个简单介绍一下 flux 架构
+Flux 将一个应用分成四个部分。
 
-- View： 视图层
-- Action（动作）：视图层发出的消息（比如mouseClick）
-- Dispatcher（派发器）：用来接收Actions、执行回调函数
-- Store（数据层）：用来存放应用的状态，一旦发生变动，就提醒Views要更新页面
+- View：视图层
+- Action（动作）：视图层发出的消息（比如 mouseClick）
+- Dispatcher（派发器）：用来接收 Actions、执行回调函数
+- Store（数据层）：用来存放应用的状态，一旦发生变动，就提醒 Views 要更新页面
 
 <img src="https://www.ruanyifeng.com/blogimg/asset/2016/bg2016011503.png" alt="flux" />
 
@@ -192,16 +192,16 @@ Flux将一个应用分成四个部分。
 #### 通过 Action-Reducer-Store 的工作流程实现状态的管理，具有以下的优点，
 
 - 可预测和不可变状态，行为稳定可预测、可运行在不同环境
-- 单一 store ，单项数据流集中管理状态，在做 撤销/重做、 状态持久化 等场景有天然优势
+- 单一 store，单项数据流集中管理状态，在做 撤销/重做、 状态持久化 等场景有天然优势
 - 成熟的开发调试工具，Redux DevTools 可以追踪到应用的状态的改变
 
-使用 Redux 就得遵循他的设计思想，包括其中的 “三大原则”，
+使用 Redux 就得遵循他的设计思想，包括其中的“三大原则”，
 
 - 使用单一 store 作为数据源
 - state 是只读的，唯一改变 state 的方式就是触发 action
 - 使用纯函数来执行修改，接收之前的 state 和 action，并返回新的 state
 
-下面有一个简单的demo
+下面有一个简单的 demo
 ```tsx
 import React from "react";
 import { createStore, combineReducers } from "redux";
@@ -258,7 +258,7 @@ const App: React.FC = () =>
 性能问题，状态量大的情况下，state 更新会影响所有组件，每个 action 都会调用所有 reducer
 
 虽然 Redux 一致尝试致力解决上述部分问题，比如后面推出的 redux toolkit，但即便如此，对于开发者（尤其是初学者）而言，仍然有比较高的学习成本和心智负担。
-相比之下我还是更推荐zustand
+相比之下我还是更推荐 zustand
 ## zustand
 zustand 是一个轻量级的状态管理库，经过 Gzip 压缩后仅 954B 大小，
 zustand 凭借其函数式的理念，优雅的 API 设计，成为 2021 年 Star 数增长最快的 React 状态管理库，
@@ -272,7 +272,7 @@ zustand 凭借其函数式的理念，优雅的 API 设计，成为 2021 年 Sta
 zustand 的心智模型非常简单，包含一个发布订阅器和渲染层，工作原理如下
 
 <img src="https://camo.githubusercontent.com/259b5a04bd2ce117a36babaabfda622ac60e8a81a2f7e286965e73980d882b89/68747470733a2f2f70312d6a75656a696e2e62797465696d672e636f6d2f746f732d636e2d692d6b3375316662706663702f38366262633438393732623634353034386463643938623134663434373732377e74706c762d6b3375316662706663702d77617465726d61726b2e696d6167653f" alt="zustand" />
-其中 Vanilla 层是发布订阅模式的实现，提供了`setState`、`subscribe` 和 `getState` 方法，React 层是 Zustand 的核心，实现了 reselect 缓存和注册事件的 listener 的功能，并且通过 `forceUpdate` 对组件进行重渲染，发布订阅相信大家都比较了解了，我们重点介绍下渲染层。
+其中 Vanilla 层是发布订阅模式的实现，提供了 `setState`、`subscribe` 和 `getState` 方法，React 层是 Zustand 的核心，实现了 reselect 缓存和注册事件的 listener 的功能，并且通过 `forceUpdate` 对组件进行重渲染，发布订阅相信大家都比较了解了，我们重点介绍下渲染层。
 首先思考一个问题，React hooks 语法下，我们如何让当前组件刷新？
 是不是只需要利用 useState 或 useReducer 这类 hook 的原生能力即可，调用第二个返回值的 dispatch 函数，就可以让组件重新渲染，这里 zustand 选择的是 useReducer，
 
@@ -280,7 +280,7 @@ zustand 的心智模型非常简单，包含一个发布订阅器和渲染层，
 const [, forceUpdate] = useReducer((c) => c + 1, 0) as [never, () => void]
 ```
 有了 forceUpdate 函数，接下来的问题就是什么时候调用 forceUpdate
-参考一下zustand源码
+参考一下 zustand 源码
 ```ts
 // create 函数实现
 // api 本质就是就是 createStore 的返回值，也就是 Vanilla 层的发布订阅器
@@ -329,7 +329,7 @@ Context 更适合存储一些全局的共享信息，如主题，用户登陆信
 ref 更适用于管理焦点，获取子组件的值，触发强制动画，第三方 DOM 库集成等场景
 如果你习惯了不可变更新，可以考虑生态丰富的 redux 和轻量的 zustand
 如果你习惯了类 Vue 的响应式可变模型，mobx 和 valtio 可能更适合
-如果你想尝试原子状态的方案，recoil 和 jotai 是个不错的选择(recoil已经被gank了 据说有内存泄漏问题🤣)
+如果你想尝试原子状态的方案，recoil 和 jotai 是个不错的选择 (recoil 已经被 gank 了 据说有内存泄漏问题🤣)
 如果你想基于 custom hook 实现状态持久化和共享，hox 可能更适合
 
 

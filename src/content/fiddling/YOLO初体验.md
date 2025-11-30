@@ -11,13 +11,13 @@ lang: zh
 abbrlink: ''
 ---
 
-# YOLO初体验
+# YOLO 初体验
 
 也是炼上丹了
 
 这篇可能主要是记录一些方法 可能跟之前写的分享不太一样
 
-yolo训练阶段
+yolo 训练阶段
 
 验证模型
 
@@ -25,11 +25,11 @@ yolo训练阶段
 yolo detect val data=YOLOv8_cs/datasets/page_seg/page_icon.yaml model=YOLOv8_cs/runs/detect/best.pt batch=4
 ```
 
-训练自己的数据集 我这个用的是coco128数据集的格式
+训练自己的数据集 我这个用的是 coco128 数据集的格式
 
-首先要有 img文件夹 放自己要训练的图片
+首先要有 img 文件夹 放自己要训练的图片
 
-然后你需要 在label文件夹 放出自己标注出来的txt
+然后你需要 在 label 文件夹 放出自己标注出来的 txt
 
 然后还需要写个解释文件
 
